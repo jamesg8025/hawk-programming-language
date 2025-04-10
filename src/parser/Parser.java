@@ -154,7 +154,7 @@ public class Parser {
     }
 
     // Rule 7: STMT
-    private void parseSTMT() throws ParseException, IOException {
+    private void parseStmt() throws ParseException, IOException {
         System.out.println("STMT");
 
         switch (currentToken.getType()) {
@@ -162,10 +162,10 @@ public class Parser {
                 parseAssign();
                 break;
             case IF:
-                parseIf();
+                parseIfStmt();
                 break;
             case WHILE:
-                parseWhile();
+                parseWhileStmt();
                 break;
             case INPUT:
                 parseInput();

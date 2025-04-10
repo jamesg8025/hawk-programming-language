@@ -27,7 +27,7 @@ public class Scanner {
     }
 
     // Method to move to next char
-    private void nextChar() throw IOException {
+    private void nextChar() throws IOException {
             currentChar = reader.read();
             position++;
             if (currentChar == '\n') {
@@ -135,6 +135,9 @@ public class Scanner {
                 case "double":
                     type = TokenType.DOUBLE;
                     break;
+                case "call":
+                    type = TokenType.CALL;
+                    break;
                 default:
                     if (symbolTable.isReservedWord(id)) {
                         throw new IOException("Error at line " + line + ": " + ie + " ' is a reserved word.");
@@ -163,7 +166,7 @@ public class Scanner {
                     } else {
                         digitCount++;
                         if (digitCount > 10) {
-                            throw new IOException("Error at line " + line + ": Number exceeds 10 digits")
+                            throw new IOException("Error at line " + line + ": Number exceeds 10 digits");
                         }
                 }
 
@@ -171,7 +174,7 @@ public class Scanner {
                 nextChar();
             }
             currentToken = new Token(TokenType.NUM, lexeme.toString(), line, startPosition);
-            return currentToken
+            return currentToken;
         }
 
     // Scan symbol from input
@@ -186,66 +189,66 @@ public class Scanner {
                 if (currentChar == '=') {
                     nextChar();
                     type = TokenType.ASSIGN;
-                    lexeme = ':=';
+                    lexeme = ":=";
                 } else {
                     type = TokenType.COLON;
-                    lexeme = ':';
+                    lexeme = ":";
                 }
                 break;
             case ';':
                 nextChar();
                 type = TokenType.SEMICOLON;
-                lexeme = ';';
+                lexeme = ";";
                 break;
             case ',':
                 nextChar();
                 type = TokenType.COMMA;
-                lexeme = ',';
+                lexeme = ",";
                 break;
             case '+':
                 nextChar();
                 type = TokenType.PLUS;
-                lexeme = '+';
+                lexeme = "+";
                 break;
             case '-':
                 nextChar();
                 type = TokenType.MINUS;
-                lexeme = '-';
+                lexeme = "-";
                 break;
             case '*':
                 nextChar();
                 type = TokenType.MULT;
-                lexeme = '*';
+                lexeme = "*";
                 break;
             case '/':
                 nextChar();
                 type = TokenType.DIV;
-                lexeme = '/';
+                lexeme = "/";
                 break;
             case '(':
                 nextChar();
                 type = TokenType.LPAREN;
-                lexeme = '(';
+                lexeme = "(";
                 break;
             case ')':
                 nextChar();
                 type = TokenType.RPAREN;
-                lexeme = ')';
+                lexeme = ")";
                 break;
             case '=':
                 nextChar();
                 type = TokenType.EQUALS;
-                lexeme = '=';
+                lexeme = "=";
                 break;
             case '>':
                 nextChar();
                 type = TokenType.GREATER_THAN;
-                lexeme = '>';
+                lexeme = ">";
                 break;
             case '<':
                 nextChar();
                 type = TokenType.LESS_THAN;
-                lexeme = '<';
+                lexeme = "<";
                 break;
             default:
                 throw new IOException("Error at line " + line + ": Illegal symbol: '" + lexeme + "'");

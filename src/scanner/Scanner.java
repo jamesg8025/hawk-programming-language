@@ -1,6 +1,5 @@
 package scanner;
 
-import java.util.Scanner;
 import java.io.IOException;
 import java.io.Reader;
 import parser.SymbolTable;
@@ -140,7 +139,7 @@ public class Scanner {
                     break;
                 default:
                     if (symbolTable.isReservedWord(id)) {
-                        throw new IOException("Error at line " + line + ": " + ie + " ' is a reserved word.");
+                        throw new IOException("Error at line " + line + ": " + id + " ' is a reserved word.");
                     }
                     type = TokenType.ID;
                     break;

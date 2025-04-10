@@ -6,11 +6,11 @@ package scanner;
 */
 
 public enum TokenType {
-    // Reserved words
-    PROGRAM, BEGIN, END, IF, THEN, ELSE, INPUT, OUTPUT, INT, WHILE, LOOP, ID, NUM, EOF
+    // Reserved words (keywords)
+    PROGRAM, BEGIN, END, IF, THEN, ELSE, INPUT, OUTPUT, WHILE, LOOP, ID, NUM, INT, FLOAT, DOUBLE, EOF,
 
     // Operators
-    ASSIGN, LESS_THAN, GREATER_THAN, EQUALS, NOT_EQUALS, PLUS, MINUS, MULTIPLY, DIVIDE,
+    ASSIGN, LESS_THAN, GREATER_THAN, EQUALS, NOT_EQUALS, PLUS, MINUS, MULT, DIV,
 
     // Separators
     SEMICOLON, COMMA, COLON, DOT, LPAREN, RPAREN

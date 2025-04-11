@@ -23,11 +23,22 @@ public class Main {
                 // Default sample program for testing
                 String sampleProgram =
                         "program\n" +
-                                "x, y: int;\n" +
+                                "x, y: double;\n" +
+                                "e: int;\n" +
                             "begin\n" +
-                                "input x,y;\n" +
-                                "y := x + y;\n" +
-                                "output y;\n" +
+                                "input x;\n" +
+                                "y := 1;\n" +
+                                "if (x > 0) then\n" +
+                                    "e := 0;\n" +
+                                    "while (x > 0)\n" +
+                                    "loop\n" +
+                                        "y := y * x;\n" +
+                                        "x := x -1;\n" +
+                                    "end loop;\n" +
+                                "else\n" +
+                                    "e := 1;\n" +
+                                "end if;\n" +
+                                "output e, x, y;\n" +
                             "end;\n";
 
                 input = new StringReader(sampleProgram);

@@ -142,7 +142,7 @@ public class Parser {
 
     // Rule 6: STMT_SEC
     private void parseStmtSec() throws ParseException, IOException {
-        System.out.print("STMT_SEC");
+        System.out.println("STMT_SEC");
 
         parseStmt();
 
@@ -248,6 +248,8 @@ public class Parser {
     private void parseOutput() throws ParseException, IOException {
         System.out.println("OUTPUT");
 
+        match(TokenType.OUTPUT);
+
         if (currentToken.getType() == TokenType.ID) {
             // Check if all id are declared
             List<String> identifiers = parseIdList();
@@ -300,15 +302,16 @@ public class Parser {
 
         if (currentToken.getType() == TokenType.NUM) {
             match(TokenType.NUM);
+        } else if (currentToken.getType() == TokenType.ID) {
             // Check if id is declared
             symbolTable.checkDeclared(currentToken.getLexeme(), currentToken.getLine());
 
             // Store id in case it's part of a function call
             String idName = currentToken.getLexeme();
-            match(TokenType.NUM);
+            match(TokenType.ID);
 
             // Check if it's a function call
-            if (currentToken.getType () == TokenType.LPAREN) {
+            if (currentToken.getType() == TokenType.LPAREN) {
                 // handle function call
                 parseFunCall(idName);
             }

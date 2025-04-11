@@ -119,7 +119,7 @@ public class Parser {
 
     // Rule 18: TYPE
     private String parseType() throws ParseException, IOException {
-        System.out.println("TYPE");
+        //System.out.println("TYPE");
 
         String type = ""; // Initialize type variable
 
@@ -197,9 +197,9 @@ public class Parser {
         }
     }
 
-    // Rule 9: IFSTMT
+    // Rule 9: IF_STMT
     private void parseIfStmt() throws ParseException, IOException {
-        System.out.println("IFSTMT");
+        System.out.println("IF_STMT");
 
         match(TokenType.IF);
         parseComp();
@@ -218,7 +218,7 @@ public class Parser {
 
     // Rule 10: WHILESTMT
     private void parseWhileStmt() throws ParseException, IOException {
-        System.out.println("WHILESTMT");
+        System.out.println("WHILE_STMT");
 
         match(TokenType.WHILE);
         parseComp();

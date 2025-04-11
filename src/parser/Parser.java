@@ -31,7 +31,7 @@ public class Parser {
             currentToken = scanner.nextToken();
         } else {
             throw new ParseException("Error at line " + currentToken.getLine() +
-                    " : Expected " + expectedType + " but found " + currentToken.getLexeme() + "'");
+                    ": Expected " + expectedType + " but found '" + currentToken.getLexeme() + "'");
         }
     }
 
@@ -233,6 +233,8 @@ public class Parser {
     private void parseInput() throws ParseException, IOException {
         System.out.println("INPUT");
 
+        match(TokenType.INPUT);
+
         // Check if all id are declared
         List<String> identifiers = parseIdList();
         for (String id : identifiers) {
@@ -294,9 +296,10 @@ public class Parser {
 
     // Rule 15: OPERAND
     private void parseOperand() throws ParseException, IOException {
-        System.out.print("OPERAND");
+        System.out.println("OPERAND");
 
         if (currentToken.getType() == TokenType.NUM) {
+            match(TokenType.NUM);
             // Check if id is declared
             symbolTable.checkDeclared(currentToken.getLexeme(), currentToken.getLine());
 

@@ -19,8 +19,8 @@ public class Scanner {
     private SymbolTable symbolTable;
 
     // Constructor for the scanner
-    public Scanner(Reader reader) {
-        this.reader = reader;
+    public Scanner(Reader input) throws IOException {
+        this.reader = input;
         this.symbolTable = new SymbolTable();
         nextChar(); // Read first char
     }
@@ -180,7 +180,7 @@ public class Scanner {
     private Token scanSymbol() throws IOException {
         int startPosition = position;
         TokenType type;
-        String lexeme;
+        String lexeme = String.valueOf((char) currentChar);
 
         switch (currentChar) {
             case ':':
@@ -250,6 +250,7 @@ public class Scanner {
                 lexeme = "<";
                 break;
             default:
+                nextChar();
                 throw new IOException("Error at line " + line + ": Illegal symbol: '" + lexeme + "'");
         }
         currentToken = new Token(type, lexeme, line, startPosition);

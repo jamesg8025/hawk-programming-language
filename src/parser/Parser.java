@@ -28,10 +28,20 @@ public class Parser {
     // Match currentToken with expected token type
     private void match(TokenType expectedType) throws ParseException, IOException {
         if (currentToken.getType() == expectedType) {
+            int lastTokenLine = currentToken.getLine();
             currentToken = scanner.nextToken();
+
         } else {
-            throw new ParseException("Error at line " + currentToken.getLine() +
-                    ": Expected " + expectedType + " but found '" + currentToken.getLexeme() + "'");
+            // Print error message with line number of the missing semicolon, comma, or colon
+            if (expectedType == TokenType.SEMICOLON ||
+                    expectedType == TokenType.COMMA ||
+                    expectedType == TokenType.COLON) {
+                throw new ParseException("Error at line " + (currentToken.getLine() - 1) +
+                        ": Expected " + expectedType + " but found '" + currentToken.getLexeme() + "'");
+            } else {
+                throw new ParseException("Error at line " + currentToken.getLine() +
+                        ": Expected " + expectedType + " but found '" + currentToken.getLexeme() + "'");
+            }
         }
     }
 

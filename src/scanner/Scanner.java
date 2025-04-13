@@ -3,7 +3,6 @@ package scanner;
 import java.io.IOException;
 import java.io.Reader;
 import parser.SymbolTable;
-import parser.ParseException;
 
 /**
  * Scanner for Hawk programming language.

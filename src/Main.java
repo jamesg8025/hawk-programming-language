@@ -4,7 +4,6 @@ import java.io.Reader;
 import java.io.StringReader;
 
 import parser.Parser;
-import parser.ParseException;
 import scanner.Scanner;
 
 /**

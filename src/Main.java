@@ -8,8 +8,9 @@ import parser.ParseException;
 import scanner.Scanner;
 
 /**
- * Main driver class for the Hawk compiler.
- * Handles command line arguments and initiates the parsing process.
+ * Main driver class for the Hawk language compiler.
+ * Handles command line arguments (program file path) or hard-coded sample program inputs.
+ * The parsing process is then initiated.
  */
 public class Main {
 
@@ -23,22 +24,11 @@ public class Main {
                 // Default sample program for testing
                 String sampleProgram =
                         "program\n" +
-                                "x, y: double;\n" +
-                                "e: int;\n" +
+                                "x, y: int;\n" +
                             "begin\n" +
-                                "input x;\n" +
-                                "y := 1;\n" +
-                                "if (x > 0) then\n" +
-                                    "e := 0;\n" +
-                                    "while (x > 0)\n" +
-                                    "loop\n" +
-                                        "y := y * x;\n" +
-                                        "x := x -1;\n" +
-                                    "end loop;\n" +
-                                "else\n" +
-                                    "e := 1;\n" +
-                                "end if;\n" +
-                                "output e, x, y;\n" +
+                                "input x, y;\n" +
+                                "y := x + y;\n" +
+                                "output y;\n" +
                             "end;\n";
 
                 input = new StringReader(sampleProgram);

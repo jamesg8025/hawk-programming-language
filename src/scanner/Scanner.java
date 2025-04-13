@@ -86,6 +86,7 @@ public class Scanner {
                 nextChar();
             }
 
+            // Convert lexeme to id and declare enum type for token classification.
             String id = lexeme.toString();
             TokenType type;
 
@@ -121,9 +122,6 @@ public class Scanner {
                 case "loop":
                     type = TokenType.LOOP;
                     break;
-/*                case "num":
-                    type - TokenType.NUM;
-                    break;*/
                 case "int":
                     type = TokenType.INT;
                     break;
